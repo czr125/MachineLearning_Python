@@ -1,5 +1,5 @@
 import pandas as pd
-
+import matplotlib.pyplot as plt
 # Carrega o arquivo csv cru
 arquivo = 'imdb_movies.csv'
 
@@ -30,3 +30,15 @@ print('O filme mais votado é:', filme_mais_votado)
 print("O filme com o maior orçamento é:", nome_filme_maior_orcamento)
 print("Valor do orçamento:", orcamento_filme_maior_orcamento)
 
+top_10 = df.sort_values(by='budget_x', ascending=False).head(10)
+
+plt.bar(top_10['names'], top_10['budget_x'])
+
+plt.title('Top 10 Orçamento dos Filmes')
+plt.xlabel('Filme')
+plt.ylabel('Orçamento')
+
+plt.xticks(rotation=45)
+
+plt.tight_layout()
+plt.show()
